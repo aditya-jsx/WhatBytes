@@ -15,7 +15,7 @@ export const products: Product[] = [
     price: 99,
     category: "Clothing",
     image: "/",
-    rating: 4.5,
+    rating: 4,
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const products: Product[] = [
     price: 149,
     category: "Electronics",
     image: "/",
-    rating: 4.2,
+    rating: 4,
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ export const products: Product[] = [
     price: 129,
     category: "Home",
     image: "/",
-    rating: 4.6,
+    rating: 3,
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const products: Product[] = [
     price: 249,
     category: "Electronics",
     image: "/",
-    rating: 4.3,
+    rating: 5,
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const products: Product[] = [
     price: 149,
     category: "Clothing",
     image: "/",
-    rating: 4.4,
+    rating: 2,
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ export const products: Product[] = [
     price: 499,
     category: "Electronics",
     image: "/",
-    rating: 4.7,
+    rating: 1,
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ export const products: Product[] = [
     price: 29,
     category: "Clothing",
     image: "/",
-    rating: 4.1,
+    rating: 4,
   },
   {
     id: 8,
@@ -71,7 +71,7 @@ export const products: Product[] = [
     price: 699,
     category: "Electronics",
     image: "/",
-    rating: 4.8,
+    rating: 5,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
