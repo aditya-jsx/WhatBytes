@@ -2,6 +2,7 @@
 
 import { Star, ShoppingCart } from "lucide-react"
 import Link from "next/link"
+import { useCart } from "../context/cartContext"
 
 interface ProductCardProps {
   id: number
@@ -12,10 +13,12 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ id, title, price, image, rating }: ProductCardProps) {
+  const { addToCart } = useCart()
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    addToCart({ id, title, price, image })
   }
 
   return (

@@ -2,6 +2,7 @@
 
 import { Star } from "lucide-react"
 import Link from "next/link"
+import { useCart } from "../context/cartContext"
 
 interface SpecialProductProps {
   id: number
@@ -14,23 +15,35 @@ interface SpecialProductProps {
 }
 
 export function SpecialProduct({ id, title, price, image, rating, description, category }: SpecialProductProps) {
+  const { addToCart } = useCart()
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    addToCart({ id, title, price, image })
   }
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition h-full flex flex-col">
-      <Link href={`/product/${id}`} className="flex-grow">
-        <div className="">
-          <div className="relative w-full md:h-32 bg-gray-100 overflow-hidden">
-            <img src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
-          </div>
+    <div className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition h-full">
+      <Link href={`/product/${id}`} className="flex flex-col md:flex-row h-full">
+        
+        <div className="w-full md:w-5/12 relative bg-gray-100 h-64 md:h-auto shrink-0">
+          <img 
+            src={image || "/placeholder.svg"} 
+            alt={title} 
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
+        </div>
 
-          <div className="p-4 space-y-3">
-            <h3 className="text-lg font-bold text-gray-900">{title}</h3>
-            <p className="text-3xl font-bold text-gray-900">${price}</p>
+        <div className="p-6 flex flex-col justify-between w-full md:w-7/12">
+          <div className="space-y-3">
+            <div className="flex flex-col justify-between items-start">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">{title}</h3>
+                
+              </div>
+              <p className="text-2xl font-bold text-gray-900">${price}</p>
+            </div>
 
             {rating && (
               <div className="flex items-center gap-2">
@@ -44,27 +57,23 @@ export function SpecialProduct({ id, title, price, image, rating, description, c
                     />
                   ))}
                 </div>
+                <span className="text-xs text-gray-500">({rating}.0)</span>
               </div>
             )}
 
-            {description && <p className="text-sm text-gray-600 line-clamp-3">{description}</p>}
-
-            {category && (
-              <div className="text-sm">
-                <span className="font-semibold text-gray-700">Category</span>
-                <p className="text-gray-600">{category}</p>
-              </div>
-            )}
-            <button
-              onClick={handleAddToCart}
-              className="w-full bg-blue-700 text-white py-3 rounded-lg cursor-pointer px-4 font-semibold hover:bg-blue-800 transition"
-            >
-              Add to Cart
-            </button>
+            {description && <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">{description}</p>}
+            {category && <p className="font-semibold">Category</p>}
+            {category && <span className=" ">{category}</span>}
           </div>
+
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-blue-600 text-white py-3 rounded-lg cursor-pointer px-4 font-semibold hover:bg-blue-700 transition mt-6 shadow-sm"
+          >
+            Add to Cart
+          </button>
         </div>
       </Link>
-
     </div>
   )
 }

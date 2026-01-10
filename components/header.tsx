@@ -2,8 +2,11 @@
 
 import { ShoppingCart, Search } from "lucide-react"
 import Link from "next/link"
+import { useCart } from "../context/cartContext"
 
 export function Header() {
+  const { items } = useCart()
+
   return (
     <nav className="bg-blue-700 text-white">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
@@ -25,10 +28,15 @@ export function Header() {
 
         <Link
           href="/cart"
-          className="relative flex items-center gap-2 px-4 py-2 bg-blue-800 rounded-md hover:bg-blue-900 transition"
+          className="relative flex items-center gap-2 px-6 py-3 bg-blue-950 rounded-md hover:bg-blue-800 transition"
         >
           <ShoppingCart className="h-5 w-5" />
           <span className="text-sm">Cart</span>
+          {items.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+              {items.length}
+            </span>
+          )}
         </Link>
 
       </div>

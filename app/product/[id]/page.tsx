@@ -76,7 +76,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   />
                 </div>
 
-                <button className="w-full bg-blue-700 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-800 transition flex items-center justify-center gap-2 text-lg">
+                <button className="w-full bg-blue-700 text-white py-3 px-6 cursor-pointer rounded-md font-semibold hover:bg-blue-800 transition flex items-center justify-center gap-2 text-lg">
                   <ShoppingCart className="h-5 w-5" />
                   Add to Cart
                 </button>
