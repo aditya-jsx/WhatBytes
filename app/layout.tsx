@@ -5,6 +5,7 @@ import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import { CartProvider } from "../context/cartContext";
 import { Toaster } from "sonner";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,9 @@ export default function RootLayout({
       >
         <div>
           <CartProvider>
-            <Header />
+            <Suspense fallback={<div className="h-16 bg-blue-700" />}> 
+              <Header />
+            </Suspense>
               {children}
             <Footer />
             <Toaster position="bottom-right" richColors />
