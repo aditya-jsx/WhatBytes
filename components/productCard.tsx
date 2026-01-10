@@ -3,6 +3,7 @@
 import { Star, ShoppingCart } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "../context/cartContext"
+import { toast } from "sonner"
 
 interface ProductCardProps {
   id: number
@@ -19,6 +20,7 @@ export function ProductCard({ id, title, price, image, rating }: ProductCardProp
     e.preventDefault()
     e.stopPropagation()
     addToCart({ id, title, price, image })
+    toast.success(`${title} added to cart!`)
   }
 
   return (

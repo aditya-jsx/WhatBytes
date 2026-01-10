@@ -3,6 +3,7 @@
 import { ShoppingCart } from "lucide-react"
 import { useCart } from "../context/cartContext"
 import { useState } from "react"
+import { toast } from "sonner"
 
 interface AddToCartButtonProps {
   product: {
@@ -20,7 +21,8 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
   const handleAdd = () => {
     for(let i=0; i<quantity; i++) {
         addToCart(product)
-    }
+      }
+      toast.success(`${product.title} added to cart!`)
   }
 
   return (
