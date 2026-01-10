@@ -4,6 +4,7 @@ import { Star, ShoppingCart } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "../context/cartContext"
 import { toast } from "sonner"
+import Image from "next/image"
 
 interface ProductCardProps {
   id: number
@@ -28,7 +29,7 @@ export function ProductCard({ id, title, price, image, rating }: ProductCardProp
       <div className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition cursor-pointer h-full flex flex-col">
         
         <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
-          <img src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
+          <Image src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" width={200} height={200}  />
         </div>
 
 

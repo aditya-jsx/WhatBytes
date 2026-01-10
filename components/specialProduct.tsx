@@ -3,6 +3,7 @@
 import { Star } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "../context/cartContext"
+import Image from "next/image"
 
 interface SpecialProductProps {
   id: number
@@ -28,10 +29,12 @@ export function SpecialProduct({ id, title, price, image, rating, description, c
       <Link href={`/product/${id}`} className="flex flex-col md:flex-row h-full">
         
         <div className="w-full md:w-5/12 relative bg-gray-100 h-64 md:h-auto shrink-0">
-          <img 
+          <Image
             src={image || "/placeholder.svg"} 
             alt={title} 
             className="absolute inset-0 w-full h-full object-cover" 
+            width={500}
+            height={500}
           />
         </div>
 

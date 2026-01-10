@@ -3,6 +3,7 @@ import { products } from "../../../data/products"
 import { Star } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import Image from "next/image"
 
 interface ProductPageProps {
   params: Promise<{ id: string }>
@@ -26,11 +27,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         <div className="bg-white rounded-lg overflow-hidden p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex items-center justify-center bg-gray-100 rounded-lg">
-              <img
+            <div className="flex items-center justify-center rounded-lg">
+              <Image
                 src={product.image || "/placeholder.svg"}
                 alt={product.title}
-                className="w-full h-full max-h-96 object-contain"
+                className="w-full h-full max-h-96 object-cover rounded-lg"
+                height={100}
+                width={300}
               />
             </div>
 

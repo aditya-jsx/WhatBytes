@@ -2,6 +2,7 @@
 
 import { useCart } from "../../context/cartContext"
 import { Trash2, Plus, Minus } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function CartPage() {
@@ -31,10 +32,12 @@ export default function CartPage() {
               {items.map((item) => (
                 <div key={item.id} className="bg-white rounded-lg p-6 flex gap-4 items-start">
                   
-                  <img
+                  <Image
                     src={item.image || "/placeholder.svg"}
                     alt={item.title}
                     className="w-24 h-24 object-cover rounded-lg bg-gray-100"
+                    height={100}
+                    width={100}
                   />
                   
                   <div className="flex-grow">
