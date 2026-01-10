@@ -1,5 +1,6 @@
+import { AddToCartButton } from "@/components/addToCartButton"
 import { products } from "../../../data/products"
-import { Star, ShoppingCart } from "lucide-react"
+import { Star } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -66,7 +67,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               )}
 
               <div className="space-y-4">
-                <div className="flex items-center gap-4">
+                {/* <div className="flex items-center gap-4">
                   <label className="font-semibold text-gray-700">Quantity:</label>
                   <input
                     type="number"
@@ -74,12 +75,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     defaultValue="1"
                     className="w-20 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
-                </div>
-
-                <button className="w-full bg-blue-700 text-white py-3 px-6 cursor-pointer rounded-md font-semibold hover:bg-blue-800 transition flex items-center justify-center gap-2 text-lg">
-                  <ShoppingCart className="h-5 w-5" />
-                  Add to Cart
-                </button>
+                </div> */}
+                <AddToCartButton product={product} />
               </div>
             </div>
           </div>

@@ -3,10 +3,26 @@
 import { ShoppingCart, Search } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "../context/cartContext"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export function Header() {
   const { items } = useCart()
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    const params = new URLSearchParams(searchParams);
+
+    if(term){
+      params.set("search", term)
+    }else{
+      params.delete("search")
+    }
+
+    router.replace(`/?${params.toString()}`)
+  }
+  
   return (
     <nav className="bg-blue-700 text-white">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
@@ -21,6 +37,8 @@ export function Header() {
             <input
               type="text"
               placeholder="Search for products..."
+              defaultValue={searchParams.get("search")?.toString()}
+              onChange={handleSearch}
               className="w-full px-4 py-2 pl-10 rounded-md border border-white bg-blue-600 text-white placeholder-white focus:outline-none focus:border-blue-400"
             />
           </div>

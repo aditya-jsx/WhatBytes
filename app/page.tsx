@@ -4,13 +4,14 @@ import { ProductCard } from "../components/productCard"
 import { SpecialProduct } from "../components/specialProduct"
 
 interface HomePageProps {
-  searchParams: Promise<{ category?: string; maxPrice?: string }>
+  searchParams: Promise<{ category?: string; maxPrice?: string; search?: string }>
 }
 
 export default async function Home({ searchParams }: HomePageProps) {
   const params = await searchParams
   const selectedCategory = params.category
   const maxPrice = Number.parseInt(params.maxPrice || "1000")
+  const searchTerm = params.search || ""
 
   let filteredProducts = products
 
@@ -19,6 +20,12 @@ export default async function Home({ searchParams }: HomePageProps) {
   }
 
   filteredProducts = filteredProducts.filter((p) => p.price <= maxPrice)
+
+  if (searchTerm) {
+  filteredProducts = filteredProducts.filter((p) => 
+    p.title.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+}
 
   const specialProduct = filteredProducts.find((p) => p.id === 8)
   const regularProducts = filteredProducts.filter((p) => p.id !== 8)
