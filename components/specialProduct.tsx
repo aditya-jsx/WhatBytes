@@ -4,6 +4,7 @@ import { Star } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "../context/cartContext"
 import Image from "next/image"
+import { toast } from "sonner"
 
 interface SpecialProductProps {
   id: number
@@ -22,6 +23,7 @@ export function SpecialProduct({ id, title, price, image, rating, description, c
     e.preventDefault()
     e.stopPropagation()
     addToCart({ id, title, price, image })
+    toast.success(`${title} added to cart!`)
   }
 
   return (
