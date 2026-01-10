@@ -52,7 +52,7 @@ export function ProductCard({ id, title, price, image, rating }: ProductCardProp
           </div>
           <button
             onClick={handleAddToCart}
-            className="w-full bg-blue-700 text-white py-2 px-4 font-semibold rounded-lg cursor-pointer hover:bg-blue-800 transition flex items-center justify-center gap-2"
+            className="w-full bg-blue-700 text-white mt-2 py-2 px-4 font-semibold rounded-lg cursor-pointer hover:bg-blue-800 transition flex items-center justify-center gap-2"
           >
             <ShoppingCart className="h-4 w-4" />
             Add to Cart
